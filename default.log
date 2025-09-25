@@ -1,0 +1,15 @@
+Gazebo multi-robot simulator, version 11.15.1
+Copyright (C) 2012 Open Source Robotics Foundation.
+Released under the Apache 2 License.
+http://gazebosim.org
+
+
+(1758803177 119942092) [Msg] Waiting for master.
+(1758803177 120611613) Failed to create connection to remote host[localhost:11345]
+(1758803178 125894458) [Msg] Connected to gazebo master @ http://127.0.0.1:11345
+(1758803178 126012924) [Msg] Publicized address: 192.168.146.132
+(1758803178 127101987) Loaded .ini file from: "/home/zxy/.gazebo/gui.ini"
+(1758803179 123889396) [Err] [InsertModelWidget.cc:403] Missing model.config for model "/home/zxy/.gazebo/models/race_trace_floor"
+(1758803179 124102926) model.config file is missing in directory["/home/zxy/.gazebo/models/race_trace_floor"]
+(1758803181 63296401) No spacenav daemon found. Spacenav functionality is disabled
+(1758803342 188022878) [Wrn] [Publisher.cc:135] Queue limit reached for topic /gazebo/default/user_camera/pose, deleting message. This warning is printed only once.
