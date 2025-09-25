@@ -1,0 +1,19 @@
+material RaceTrack/FloorTexture
+{
+  technique
+  {
+    pass
+    {
+      lighting on
+      scene_blend alpha_blend
+      depth_write off
+      
+      texture_unit
+      {
+        texture route_markings.png
+        filtering anisotropic
+        max_anisotropy 16
+      }
+    }
+  }
+}

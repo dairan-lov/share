@@ -1,0 +1,233 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="complete_race_track">
+    <static>true</static>
+    
+    <!-- 地面路线标识 -->
+    <link name="floor_link">
+      <visual name="route_visual">
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>4.2 4.2</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://complete_race_track/materials/scripts</uri>
+            <uri>model://complete_race_track/materials/textures</uri>
+            <name>RaceTrack/FloorTexture</name>
+          </script>
+        </material>
+        <pose>0 0 0.001 0 0 0</pose>
+      </visual>
+      
+      <collision name="floor_collision">
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>4.2 4.2</size>
+          </plane>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- 边界墙 - 北墙 -->
+    <link name="north_wall">
+      <collision name="north_wall_collision">
+        <geometry>
+          <box>
+            <size>4.2 0.1 1.0</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="north_wall_visual">
+        <geometry>
+          <box>
+            <size>4.2 0.1 1.0</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+        </material>
+      </visual>
+      <pose>0 2.05 0.5 0 0 0</pose>
+    </link>
+
+    <!-- 边界墙 - 南墙 -->
+    <link name="south_wall">
+      <collision name="south_wall_collision">
+        <geometry>
+          <box>
+            <size>4.2 0.1 1.0</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="south_wall_visual">
+        <geometry>
+          <box>
+            <size>4.2 0.1 1.0</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+        </material>
+      </visual>
+      <pose>0 -2.05 0.5 0 0 0</pose>
+    </link>
+
+    <!-- 边界墙 - 东墙 -->
+    <link name="east_wall">
+      <collision name="east_wall_collision">
+        <geometry>
+          <box>
+            <size>0.1 4.2 1.0</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="east_wall_visual">
+        <geometry>
+          <box>
+            <size>0.1 4.2 1.0</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+        </material>
+      </visual>
+      <pose>2.05 0 0.5 0 0 0</pose>
+    </link>
+
+    <!-- 边界墙 - 西墙 -->
+    <link name="west_wall">
+      <collision name="west_wall_collision">
+        <geometry>
+          <box>
+            <size>0.1 4.2 1.0</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="west_wall_visual">
+        <geometry>
+          <box>
+            <size>0.1 4.2 1.0</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+        </material>
+      </visual>
+      <pose>-2.05 0 0.5 0 0 0</pose>
+    </link>
+
+    <!-- 可选：添加四个角柱，增强结构 -->
+    <link name="corner_ne">
+      <collision name="corner_ne_collision">
+        <geometry>
+          <box>
+            <size>0.1 0.1 1.0</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="corner_ne_visual">
+        <geometry>
+          <box>
+            <size>0.1 0.1 1.0</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/DarkGrey</name>
+          </script>
+        </material>
+      </visual>
+      <pose>2.05 2.05 0.5 0 0 0</pose>
+    </link>
+
+    <link name="corner_nw">
+      <collision name="corner_nw_collision">
+        <geometry>
+          <box>
+            <size>0.1 0.1 1.0</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="corner_nw_visual">
+        <geometry>
+          <box>
+            <size>0.1 0.1 1.0</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/DarkGrey</name>
+          </script>
+        </material>
+      </visual>
+      <pose>-2.05 2.05 0.5 0 0 0</pose>
+    </link>
+
+    <link name="corner_se">
+      <collision name="corner_se_collision">
+        <geometry>
+          <box>
+            <size>0.1 0.1 1.0</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="corner_se_visual">
+        <geometry>
+          <box>
+            <size>0.1 0.1 1.0</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/DarkGrey</name>
+          </script>
+        </material>
+      </visual>
+      <pose>2.05 -2.05 0.5 0 0 0</pose>
+    </link>
+
+    <link name="corner_sw">
+      <collision name="corner_sw_collision">
+        <geometry>
+          <box>
+            <size>0.1 0.1 1.0</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="corner_sw_visual">
+        <geometry>
+          <box>
+            <size>0.1 0.1 1.0</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/DarkGrey</name>
+          </script>
+        </material>
+      </visual>
+      <pose>-2.05 -2.05 0.5 0 0 0</pose>
+    </link>
+
+  </model>
+</sdf>
