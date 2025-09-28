@@ -1,0 +1,42 @@
+<launch>
+  <!-- 设置launch参数 -->
+  <arg name="world_name" default="$(find my_car_description)/worlds/my_map.world"/>
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="x" default="0.0" />
+  <arg name="y" default="0.0" />
+  <arg name="z" default="0.1" />
+
+  <!-- 启动Gazebo -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world_name)"/>
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+  </include>
+
+  <!-- 加载机器人描述 -->
+  <param name="robot_description" 
+         command="$(find xacro)/xacro '$(find my_car_description)/urdf/my_car.xacro'" />
+
+  <!-- 在Gazebo中生成机器人 -->
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+      args="-urdf -model my_car -param robot_description -x 0 -y 0 -z 0.1 -Y 3.14159" 
+      output="screen"/>
+
+  <!-- 发布关节状态 -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <!-- 发布静态TF -->
+  <node pkg="tf" type="static_transform_publisher" name="map_to_odom" 
+        args="0 0 0 0 0 0 map odom 100" />
+
+  <!-- 显示RViz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find my_car_description)/config/view_robot.rviz" required="true" />
+
+</launch>
