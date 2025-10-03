@@ -9,6 +9,7 @@
   <arg name="x" default="0.0" />
   <arg name="y" default="0.0" />
   <arg name="z" default="0.1" />
+  <arg name="yaw" default="3.14159" />
 
   <!-- 启动Gazebo -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -20,13 +21,13 @@
     <arg name="headless" value="$(arg headless)"/>
   </include>
 
-  <!-- 加载机器人描述 -->
+  <!-- 加载新的机器人描述（xacro格式） -->
   <param name="robot_description" 
-         command="$(find xacro)/xacro '$(find my_car_description)/urdf/my_car.xacro'" />
+         command="$(find xacro)/xacro '$(find my_car_description)/xacro/mycar.xacro'" />
 
-  <!-- 在Gazebo中生成机器人 -->
+  <!-- 在Gazebo中生成机器人 - 保留初始位置和方向控制 -->
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
-      args="-urdf -model my_car -param robot_description -x 0 -y 0 -z 0.1 -Y 3.14159" 
+      args="-urdf -model my_car -param robot_description -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw)" 
       output="screen"/>
 
   <!-- 发布关节状态 -->
